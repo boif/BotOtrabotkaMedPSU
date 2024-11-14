@@ -1,7 +1,8 @@
 import time
 from vk_monitor import get_latest_post
 from form_filler import fill_google_form
-from cnf.config import FORM_CHECK_INTERVAL
+
+FORM_CHECK_INTERVAL = 5
 
 def main():
     print('Запуск бота...')

@@ -4,7 +4,11 @@ from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from cnf.config import GECKODRIVER_PATH, FIO, GROUP, TOPIC
+
+FIO = "Ведищев Борис Вадимович"
+GROUP = "24лс3"
+TOPIC = "Краниология практика"
+GECKODRIVER_PATH = "geckodriver"
 
 def fill_google_form(form_link):
     options = Options()

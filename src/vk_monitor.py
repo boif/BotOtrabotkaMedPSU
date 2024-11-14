@@ -1,6 +1,8 @@
 import requests
 import re
-from cnf.config import ACCESS_TOKEN, OWNER_ID
+
+ACCESS_TOKEN = "vk1.a.ZAbDb84oF69OQ7p23CF_VYDD2GdqOodFz7yqYKiOZWhJsc6syBFWVCWQFLtxByPkSzmJbpj5ulqZHkjf2rMJc6BM9mLHd78AK_yJXZQ0xlu4E5lRwx39YCorVE5oDIGyXuzwDQYRcR-agXXpkPtZS80GeNQkake4k__NZDsazuqW0YmSrdJnuQ6Dg8wXJZOOeifBRZ69FYYTN1nCK7rTHw&expires_in=86400"
+OWNER_ID = "postoyuvstoronke"
 
 
 def get_latest_post():
