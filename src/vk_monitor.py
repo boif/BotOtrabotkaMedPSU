@@ -6,19 +6,34 @@ OWNER_ID = "boif3x"
 
 
 def get_latest_post():
-    # Формируем URL для запроса
     url = f"https://api.vk.com/method/wall.get?owner_id={OWNER_ID}&count=1&access_token={ACCESS_TOKEN}&v=5.131"
 
     try:
-        # Отправляем запрос
         response = requests.get(url).json()
 
-        # Проверяем, есть ли посты в ответе
         if 'response' in response and 'items' in response['response'] and len(response['response']['items']) > 0:
-            post_text = response['response']['items'][0]['text']
+            post = response['response']['items'][0]
+            post_text = post.get('text', '')
+
             # Ищем ссылку на Google форму в тексте поста
-            form_link = re.search(r'(https://forms\.gle/\S+|https://docs\.google\.com/forms/d/e/\S+/viewform\S*)', post_text)
-            return post_text, form_link.group(0) if form_link else None
+            form_link = re.search(r'(https://forms\.gle/\S+|https://docs\.google\.com/forms/d/e/\S+/viewform\S*)',
+                                  post_text)
+
+            # Проверяем вложения на наличие ссылки
+            link_from_attachment = None
+            if 'attachments' in post:
+                for attachment in post['attachments']:
+                    if attachment['type'] == 'link':
+                        url = attachment['link'].get('url', '')
+                        if 'docs.google.com/forms' in url:
+                            link_from_attachment = url
+                            break
+
+            # Выбираем ссылку из текста поста, если она есть, иначе - из вложения
+            google_form_link = form_link.group(0) if form_link else link_from_attachment
+
+            return post_text, google_form_link
+
         else:
             print("Нет доступных постов.")
             return None, None
@@ -32,3 +47,13 @@ def get_latest_post():
     except Exception as e:
         print(f"Произошла ошибка: {e}")
         return None, None
+
+
+# Пример использования функции
+post_text, google_form_link = get_latest_post()
+if post_text:
+    print("Текст поста:", post_text)
+if google_form_link:
+    print("Ссылка на форму Google:", google_form_link)
+else:
+    print("Ссылка на форму Google не найдена.")
