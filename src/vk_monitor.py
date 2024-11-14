@@ -15,7 +15,7 @@ def get_latest_post():
         if 'response' in response and 'items' in response['response'] and len(response['response']['items']) > 0:
             post_text = response['response']['items'][0]['text']
             # Ищем ссылку на Google форму в тексте поста
-            form_link = re.search(r'https://forms\.gle/\S+', post_text)
+            form_link = re.search(r'(https://forms\.gle/\S+|https://docs\.google\.com/forms/d/e/\S+/viewform\S*)', post_text)
             return post_text, form_link.group(0) if form_link else None
         else:
             print("Нет доступных постов.")
