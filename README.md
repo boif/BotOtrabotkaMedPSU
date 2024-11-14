@@ -41,11 +41,11 @@ Prerequisites
 
     post_text = "Text containing a Google Form link, e.g., https://forms.gle/example or https://docs.google.com/forms/d/e/example/viewform?usp=sf_link"
 
-Run the script to detect Google Form links:
+#Run the script to detect Google Form links:
 
-python src/bot.py
+    python src/bot.py
 
-Example output:
+#Example output:
 
     Запуск бота...
     Проверка на наличие новой формы...
@@ -59,16 +59,16 @@ Example output:
     Форма успешно заполнена.
 
 
-Code Explanation
+#Code Explanation
 
-The main detection logic uses a regular expression to capture both short and long Google Form links:
+#The main detection logic uses a regular expression to capture both short and long Google Form links:
 
     form_link = re.search(r'(https://forms\.gle/\S+|https://docs\.google\.com/forms/d/e/\S+/viewform\S*)', post_text)
 
     https://forms\.gle/\S+ matches short Google Form URLs.
     https://docs\.google\.com/forms/d/e/\S+/viewform\S* matches long Google Form URLs.
 
-If a link is found, it is printed to the console.
+#If a link is found, it is printed to the console.
 Troubleshooting
 
     Ensure that your WebDriver matches the version of the browser you’re using.
