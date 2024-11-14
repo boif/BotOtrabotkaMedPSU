@@ -13,19 +13,19 @@ Prerequisites
     Selenium (for automated form interaction)
     Chrome WebDriver or Firefox Geckodriver (depending on your browser preference)
 
-Installation
+## Installation
 
-    Clone the repository:
+#Clone the repository:
 
-git clone https://github.com/your-username/google-form-link-checker-bot.git
-cd google-form-link-checker-bot
+    git clone https://github.com/your-username/google-form-link-checker-bot.git
+    cd google-form-link-checker-bot
 
-Set up a virtual environment (optional but recommended):
+#Set up a virtual environment (optional but recommended):
 
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+    python -m venv venv
+    source venv/bin/activate  # On Windows: venv\Scripts\activate
 
-Install dependencies:
+#Install dependencies:
 
     pip install -r requirements.txt
 
@@ -35,25 +35,35 @@ Install dependencies:
 
     Ensure the WebDriver is in your system PATH or provide the path to it in your script.
 
-Usage
+#Usage
 
     Define the text content that the bot will scan for Google Form links.
 
-post_text = "Text containing a Google Form link, e.g., https://forms.gle/example or https://docs.google.com/forms/d/e/example/viewform?usp=sf_link"
+    post_text = "Text containing a Google Form link, e.g., https://forms.gle/example or https://docs.google.com/forms/d/e/example/viewform?usp=sf_link"
 
 Run the script to detect Google Form links:
 
-python form_link_checker.py
+python src/bot.py
 
 Example output:
 
-    Found form link: https://forms.gle/example
+    Запуск бота...
+    Проверка на наличие новой формы...
+    Нет доступных постов.
+    Форма не найдена, следующая проверка через несколько секунд.
+    Проверка на наличие новой формы...
+    Нет доступных постов.
+    Форма не найдена, следующая проверка через несколько секунд.
+    Проверка на наличие новой формы...
+    Найдена ссылка на форму: https://docs.google.com/forms/d/e/1FAIpQLSdH92YhDA3fTTBQURPnN5mKVEsyyM_vMWF2JvyH5HuBHvEO6w/viewform?usp=sf_link
+    Форма успешно заполнена.
+
 
 Code Explanation
 
 The main detection logic uses a regular expression to capture both short and long Google Form links:
 
-form_link = re.search(r'(https://forms\.gle/\S+|https://docs\.google\.com/forms/d/e/\S+/viewform\S*)', post_text)
+    form_link = re.search(r'(https://forms\.gle/\S+|https://docs\.google\.com/forms/d/e/\S+/viewform\S*)', post_text)
 
     https://forms\.gle/\S+ matches short Google Form URLs.
     https://docs\.google\.com/forms/d/e/\S+/viewform\S* matches long Google Form URLs.
