@@ -15,17 +15,17 @@ Prerequisites
 
 ## Installation
 
-#Clone the repository:
+Clone the repository:
 
     git clone https://github.com/your-username/google-form-link-checker-bot.git
     cd google-form-link-checker-bot
 
-#Set up a virtual environment (optional but recommended):
+Set up a virtual environment (optional but recommended):
 
     python -m venv venv
     source venv/bin/activate  # On Windows: venv\Scripts\activate
 
-#Install dependencies:
+Install dependencies:
 
     pip install -r requirements.txt
 
@@ -35,17 +35,17 @@ Prerequisites
 
     Ensure the WebDriver is in your system PATH or provide the path to it in your script.
 
-#Usage
+Usage
 
     Define the text content that the bot will scan for Google Form links.
 
     post_text = "Text containing a Google Form link, e.g., https://forms.gle/example or https://docs.google.com/forms/d/e/example/viewform?usp=sf_link"
 
-#Run the script to detect Google Form links:
+Run the script to detect Google Form links:
 
     python src/bot.py
 
-#Example output:
+Example output:
 
     Запуск бота...
     Проверка на наличие новой формы...
@@ -59,16 +59,16 @@ Prerequisites
     Форма успешно заполнена.
 
 
-#Code Explanation
+Code Explanation
 
-#The main detection logic uses a regular expression to capture both short and long Google Form links:
+The main detection logic uses a regular expression to capture both short and long Google Form links:
 
     form_link = re.search(r'(https://forms\.gle/\S+|https://docs\.google\.com/forms/d/e/\S+/viewform\S*)', post_text)
 
     https://forms\.gle/\S+ matches short Google Form URLs.
     https://docs\.google\.com/forms/d/e/\S+/viewform\S* matches long Google Form URLs.
 
-#If a link is found, it is printed to the console.
+If a link is found, it is printed to the console.
 Troubleshooting
 
     Ensure that your WebDriver matches the version of the browser you’re using.
