@@ -5,12 +5,9 @@ from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-FIO = "Ведищев Борис Вадимович"
-GROUP = "24лс3"
-TOPIC = "Краниология практика"
 GECKODRIVER_PATH = "geckodriver"
 
-def fill_google_form(form_link):
+def fill_google_form(form_link, fio, group, topic):
     options = Options()
     options.add_argument("--headless")
     service = Service(GECKODRIVER_PATH)
@@ -23,19 +20,19 @@ def fill_google_form(form_link):
         fio_input = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, '//input[@aria-labelledby="i1 i4"]'))
         )
-        fio_input.send_keys(FIO)
+        fio_input.send_keys(fio)
 
         # Поиск поля для "Учебная группа"
         group_input = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, '//input[@aria-labelledby="i6 i9"]'))
         )
-        group_input.send_keys(GROUP)
+        group_input.send_keys(group)
 
         # Поиск поля для "Отрабатываемая тема"
         topic_input = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, '//input[@aria-labelledby="i11 i14"]'))
         )
-        topic_input.send_keys(TOPIC)
+        topic_input.send_keys(topic)
 
         # Отправка формы
         submit_button = WebDriverWait(driver, 10).until(
