@@ -1,8 +1,8 @@
 import requests
 import re
 
-ACCESS_TOKEN = "vk1.a.ZAbDb84oF69OQ7p23CF_VYDD2GdqOodFz7yqYKiOZWhJsc6syBFWVCWQFLtxByPkSzmJbpj5ulqZHkjf2rMJc6BM9mLHd78AK_yJXZQ0xlu4E5lRwx39YCorVE5oDIGyXuzwDQYRcR-agXXpkPtZS80GeNQkake4k__NZDsazuqW0YmSrdJnuQ6Dg8wXJZOOeifBRZ69FYYTN1nCK7rTHw&expires_in=86400"
-OWNER_ID = "dr.yana_alexandrovna"
+ACCESS_TOKEN = "vk1.a.wI69TmevYcNEr-l_axmmx7gZAMoLXibJrLt2o-GZ0DyWJyeA9psSKxM8ekU34HZWhPhVeNY0bCV6XXPjG1oyeafH3EKJonMhCFOsqAKhMgjQBeGpwGjT3KNQCsoyDpCIfK64_fh9qjRJgilZxrekDDXSxWMPDy18GTTDA5YOw1DOqwU4J29DBWM0e-INkehhMcShvqno3RXzCsyE25nfFA"
+OWNER_ID = "boif3x"
 
 
 def get_latest_post():
@@ -51,13 +51,3 @@ def get_latest_post():
     except Exception as e:
         print(f"Произошла ошибка: {e}")
         return None, None
-
-
-# Пример использования функции
-post_text, google_form_link = get_latest_post()
-if post_text:
-    print("Текст поста:", post_text)
-if google_form_link:
-    print("Ссылка на форму Google:", google_form_link)
-else:
-    print("Ссылка на форму Google не найдена.")
